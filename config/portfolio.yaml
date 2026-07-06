@@ -1,0 +1,20 @@
+# Portefeuille de référence risk-platform (source de vérité, cf. SPEC.md B0.3).
+# Chargé par riskplatform.config.load_config ; les flags CLI priment sur ce fichier.
+name: reference
+base_currency: EUR
+notional_eur: 1000000
+start: "2014-01-01"   # >= 10 ans, couvre COVID 2020 et la hausse des taux 2022
+end: null             # null = aujourd'hui
+alphas: [0.95, 0.99]
+horizon_days: 1
+positions:            # weight absent => équipondéré sur toutes les positions
+  - {ticker: TTE.PA, currency: EUR}   # TotalEnergies
+  - {ticker: MC.PA,  currency: EUR}   # LVMH
+  - {ticker: SAN.PA, currency: EUR}   # Sanofi
+  - {ticker: BNP.PA, currency: EUR}   # BNP Paribas
+  - {ticker: AIR.PA, currency: EUR}   # Airbus
+  - {ticker: AAPL,   currency: USD}   # Apple
+  - {ticker: MSFT,   currency: USD}   # Microsoft
+  - {ticker: NVDA,   currency: USD}   # NVIDIA
+benchmark:            # série de marché HORS portefeuille (poids nul, cf. décisions B0)
+  {ticker: ^STOXX50E, currency: EUR}  # Euro Stoxx 50 — indice de prix, non investissable

@@ -1,0 +1,6 @@
+# Artefact de DÉPLOIEMENT uniquement (Streamlit Community Cloud installe ce
+# fichier via pip). La source de vérité des dépendances est pyproject.toml
+# (décision B4.9 #10 + amendement (b) de la validation B4) : ce fichier ne
+# liste AUCUNE dépendance directe, il installe le package local avec l'extra
+# dashboard — ne rien ajouter ici, modifier pyproject.toml à la place.
+.[app]

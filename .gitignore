@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# yfinance / market data caches
+.cache/
+yfinance.cache
+*.sqlite
+
+# Local working notes (not published)
+CLAUDE.md
+PLAN.md
+EXECUTION.md
+PROGRESS.md
+docs/interview-prep/
+
+# Regenerable pipeline outputs (run `python main.py` to recreate)
+outputs/
+
+# Coverage artifacts
+.coverage
+coverage.xml
+htmlcov/

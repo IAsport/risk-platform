@@ -1,0 +1,51 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "risk-platform"
+version = "0.1.0"
+description = "Plateforme de mesure des risques de marché : VaR multi-méthodes, ES, backtesting"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=1.26",
+  "pandas>=2.1",
+  "scipy>=1.11",
+  "yfinance>=0.2.40",
+  "matplotlib>=3.8",
+  "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+app = [
+  "streamlit>=1.36",  # dashboard uniquement : le coeur quant s'installe sans (SPEC.md B4.9 #3)
+]
+dev = [
+  "pytest>=8.0",
+  "pytest-cov>=5.0",
+  "ruff>=0.4",
+  "mypy>=1.10",
+  "types-PyYAML",
+  "arch>=6.0",  # oracle de validation GARCH dans les tests uniquement (PLAN §1.5)
+  "streamlit>=1.36",  # streamlit.testing.v1.AppTest (tests du dashboard en CI, SPEC.md B4.5)
+]
+
+[project.scripts]
+riskplatform = "riskplatform.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/riskplatform"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]  # pycodestyle, pyflakes, isort, bugbear, pyupgrade
+
+[tool.coverage.run]
+source = ["riskplatform"]

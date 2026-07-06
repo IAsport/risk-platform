@@ -23,14 +23,7 @@ Thumbs.db
 yfinance.cache
 *.sqlite
 
-# Local working notes (not published)
-CLAUDE.md
-PLAN.md
-EXECUTION.md
-PROGRESS.md
-docs/interview-prep/
-
-# Regenerable pipeline outputs (run `python main.py` to recreate)
+# Regenerable pipeline outputs (run `riskplatform` to recreate)
 outputs/
 
 # Coverage artifacts

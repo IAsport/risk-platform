@@ -141,12 +141,14 @@ def test_es_conditional_dominates_var_conditional():
 
 
 def test_es_975_normal_approximates_var_99_normal():
+    # L'écart théorique sous loi normale est ~0,5 % (ratio ≈ 1,005) : le seuil
+    # 0,5 % verrouille l'affirmation « quasi égaux » du README.
     pnl = _pnl()
 
     es_975 = es_parametric(pnl, alpha=0.975)
     var_99 = var_parametric(pnl, alpha=0.99)
 
-    assert es_975 == pytest.approx(var_99, rel=0.01)
+    assert es_975 == pytest.approx(var_99, rel=0.005)
 
 
 # ---------- MC vs fermé, erreurs ----------

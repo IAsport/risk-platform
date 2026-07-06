@@ -73,7 +73,8 @@ class RiskParamShock:
 
     Le mélange convexe avec J (matrice de 1) garantit une matrice de
     corrélation semi-définie positive pour tout s dans [0, 1] ; s=1 est le
-    « corrélations -> 1 » du PLAN. Sortie = VaR/ES paramétriques stressées.
+    scénario « corrélations -> 1 » (SPEC.md B3.4). Sortie = VaR/ES
+    paramétriques stressées.
     """
 
     name: str

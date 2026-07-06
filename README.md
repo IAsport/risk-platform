@@ -2,6 +2,27 @@
 
 ![CI](https://github.com/IAsport/risk-platform/actions/workflows/ci.yml/badge.svg)
 
+**➜ Dashboard en ligne : [risk-platform.streamlit.app](https://risk-platform.streamlit.app/)**
+— tous les résultats consultables sans lire une ligne de code.
+
+Combien ce portefeuille d'un million d'euros peut-il perdre demain, et comment
+sait-on que ce chiffre est fiable ? Ce projet calcule cette perte potentielle
+(la **Value-at-Risk**) par trois méthodes, confronte chacune à 12 ans
+d'histoire réelle — dont le krach COVID de mars 2020, où la méthode standard
+échoue — puis la répare pas à pas et chiffre ce qui reste hors de portée des
+modèles.
+
+Trois chiffres à retenir :
+
+- **Mars 2020 rejoué : −36,9 % du portefeuille en un mois, soit 1,19× le proxy
+  de capital réglementaire** calibré sur la VaR — ce que le stress testing
+  chiffre et que la VaR ne voit pas.
+- **Pendant le krach, la VaR standard est percée 9 fois en six semaines** ; la
+  VaR à volatilité conditionnelle (EWMA/GARCH) encaisse les quatre premiers
+  jours du choc, puis plus aucune exception du reste de la crise.
+- **Au traffic light de Bâle, la VaR standard reste en zone rouge 27 mois**
+  (capital majoré d'un tiers) ; la version conditionnelle en sort en 5 mois.
+
 Une plateforme de mesure des risques de marché construite brique par brique à
 partir d'un moteur de Value-at-Risk. L'état actuel (briques 0–4) : VaR par
 trois méthodes, **volatilité conditionnelle EWMA et GARCH(1,1) écrits à la
@@ -13,8 +34,8 @@ Kupiec/Christoffersen, lecture réglementaire FRTB, **stress testing**
 paramètres), **traffic light bâlois** reliant le backtest au multiplicateur
 de capital, un **dashboard Streamlit** de cinq pages et un **rapport de
 risque quotidien** HTML type middle office — le tout packagé, configurable en
-YAML et vérifié par une CI qui rejoue tous les résultats publiés (dashboard
-compris) sur un snapshot de données committé.
+YAML et vérifié par une CI qui rejoue les verdicts des trois études et chaque
+page du dashboard sur un snapshot de données committé.
 
 L'objectif n'est pas d'empiler des formules : chaque mesure produite est
 **confrontée à sa propre fiabilité** par backtesting — y compris quand le
@@ -149,8 +170,8 @@ toujours pas à 99 % en crise.** Le degré de liberté estimé par MLE sur les
 résidus est **ν ≈ 6,5** (sensibilité : à ν±2, la VaR 99 % ne bouge que de
 ∓2 à 3 % — le choix exact de ν n'est pas ce qui fait le modèle). La VaR monte
 de ~10 %, les exceptions passent de 21 à 19 (EWMA) et 18 (GARCH) sur l'étude,
-et de **48 à 37 sur l'échantillon complet** (p-value Kupiec multipliée par
-1 000) — mais le rejet demeure. Les exceptions restantes sont des **sauts
+et de **48 à 37 sur l'échantillon complet** (p-value Kupiec améliorée de plus
+de deux ordres de grandeur) — mais le rejet demeure. Les exceptions restantes sont des **sauts
 « jour 1 »** depuis un régime calme (σ_t a un jour de retard par
 construction), et le MLE de ν calibre toute la densité, pas la queue à 1 %
 (le domaine de l'EVT, hors périmètre). À 95 %, tout passe. Diagnostic complet
@@ -174,7 +195,7 @@ validées contre intégration numérique) :
 
 | Loi | VaR 99 % | ES 97,5 % | ES/VaR |
 |---|---|---|---|
-| Normale | 0.0289 | 0.0290 | **1.001** |
+| Normale | 0.0289 | 0.0290 | **1.003** |
 | Student-t inconditionnelle (ν = 3,8) | 0.0330 | 0.0354 | 1.07 |
 | Historique | 0.0328 | 0.0375 | 1.14 |
 
@@ -188,8 +209,9 @@ dit, le GARCH « explique » une partie des queues épaisses ; la t n'a plus à
 porter que le reste.*
 
 La première ligne est le **calibrage bâlois rendu visible** : sous loi
-normale, ES 97,5 % = VaR 99 % à 0,1 % près (transition volontairement neutre,
-vérifiée par un test). Sous queues épaisses, l'ES décolle de 7 à 14 % : un
+normale, ES 97,5 % ≈ VaR 99 % (écart de 0,3 % sur ce portefeuille — la
+transition réglementaire est volontairement neutre, vérifiée par un test à
+0,5 % près). Sous queues épaisses, l'ES décolle de 7 à 14 % : un
 portefeuille gaussien ne « voit » pas la migration réglementaire, un
 portefeuille réel, si. Le backtest d'ES (**Z₂ d'Acerbi-Székely**, p-value par
 simulation sous H0) complète le tableau avec un verdict honnête : sur la

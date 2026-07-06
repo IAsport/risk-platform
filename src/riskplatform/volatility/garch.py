@@ -18,7 +18,8 @@ Prévision à horizon h (mean-reversion géométrique) :
     sigma²_{t+h} = sigma²_LT + (alpha+beta)^(h-1) · (sigma²_{t+1} - sigma²_LT)
 
 Sources : Bollerslev (1986) ; Hull ; McNeil-Frey-Embrechts §4. La lib `arch`
-n'est utilisée que comme oracle de validation dans les tests (PLAN §1.5).
+n'est utilisée que comme oracle de validation dans les tests (SPEC.md B1.6),
+jamais importée par le code de production.
 """
 
 from __future__ import annotations

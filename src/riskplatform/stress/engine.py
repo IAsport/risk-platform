@@ -265,8 +265,9 @@ def run_stress_suite(
 ) -> StressSuite:
     """Applique le catalogue de scénarios et agrège les deux panneaux.
 
-    var_ref=None : VaR historique `alpha` plein échantillon sur r_p (référence
-    « capital VaR » du PLAN §3-B3) ; ratio_capital = loss / (3·sqrt(10)·var_ref).
+    var_ref=None : VaR historique `alpha` plein échantillon sur r_p, la
+    référence « capital VaR » du rapport de stress (SPEC.md B3.5) ;
+    ratio_capital = loss / (3·sqrt(10)·var_ref).
     IndexShock présent sans benchmark_returns -> ValueError (levée à
     l'application du scénario).
     """

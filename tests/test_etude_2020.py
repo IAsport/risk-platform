@@ -1,6 +1,6 @@
 """Verrouillage du résultat phare (SPEC.md B1.5) sur le snapshot committé.
 
-PLAN §8 : pas de résultat affiché sans test. Les verdicts du tableau README
+Règle du projet : pas de résultat affiché sans test. Les verdicts du tableau README
 (étude 2019–2021, VaR 99 %) sont vérifiés ici sur le snapshot figé
 data/cache/ (2026-07-06) — offline, déterministe. Le rolling GARCH complet
 tourne en ~2 s : inclus en CI (amendement B1.8 #8, seuil 5 min).

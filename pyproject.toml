@@ -19,7 +19,7 @@ dependencies = [
 
 [project.optional-dependencies]
 app = [
-  "streamlit>=1.36",  # dashboard uniquement : le coeur quant s'installe sans (SPEC.md B4.9 #3)
+  "streamlit==1.58.*",  # dashboard uniquement : le coeur quant s'installe sans (SPEC.md B4.9 #3) ; épinglé pour un déploiement reproductible
 ]
 dev = [
   "pytest>=8.0",
@@ -27,8 +27,8 @@ dev = [
   "ruff>=0.4",
   "mypy>=1.10",
   "types-PyYAML",
-  "arch>=6.0",  # oracle de validation GARCH dans les tests uniquement (PLAN §1.5)
-  "streamlit>=1.36",  # streamlit.testing.v1.AppTest (tests du dashboard en CI, SPEC.md B4.5)
+  "arch>=6.0",  # oracle de validation GARCH dans les tests uniquement, jamais importé par src/ (SPEC.md B1.6)
+  "streamlit==1.58.*",  # streamlit.testing.v1.AppTest (tests du dashboard en CI, SPEC.md B4.5)
 ]
 
 [project.scripts]

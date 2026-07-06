@@ -1,6 +1,6 @@
 """Verrouillage des verdicts de l'étude B3 (SPEC.md B3.7) sur le snapshot committé.
 
-PLAN §8 : pas de résultat affiché sans test. Les chiffres du notebook
+Règle du projet : pas de résultat affiché sans test. Les chiffres du notebook
 etude_stress_traffic_light et du README (stress + traffic light) sont
 vérifiés ici sur data/cache/ (snapshot 2026-07-06, benchmark ^STOXX50E
 inclus) — offline, déterministe.

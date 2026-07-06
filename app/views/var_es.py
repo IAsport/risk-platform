@@ -96,7 +96,7 @@ tail_fig.axes[0].set_xlim(float(pnl.min()) * 1.05, -0.5 * _to_1d(rows["parametri
 tail_fig.axes[0].set_ylim(0, 6)
 st.pyplot(tail_fig)
 st.caption(
-    "La normale sous-estime la queue : le quantile Student-t (nu ≈ 6-8 estimé "
-    "par MLE) est plus à gauche, surtout à 99 %. C'est ce qui divise par ~2 "
+    "La normale sous-estime la queue : le quantile Student-t (nu ≈ 6,5 estimé "
+    "par MLE sur les résidus) est plus à gauche, surtout à 99 %. C'est ce qui divise par ~2 "
     "l'écart de couverture au backtest (brique 2)."
 )

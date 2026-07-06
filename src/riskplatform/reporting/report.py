@@ -89,7 +89,7 @@ def plot_var_backtest(
     losses = -realized * notional
 
     fig, ax = plt.subplots(figsize=(10, 5))
-    ax.plot(common_index, losses, label="Realized loss", color="tab:blue", linewidth=1.5)
+    ax.plot(common_index, losses, label="Perte réalisée", color="tab:blue", linewidth=1.5)
     ax.plot(common_index, var, label="VaR", color="tab:orange", linewidth=1.5)
 
     exception_dates = common_index[exc.to_numpy() == 1]
@@ -102,9 +102,9 @@ def plot_var_backtest(
             zorder=3,
         )
 
-    ax.set_title("VaR Backtest")
+    ax.set_title("Backtest de la VaR")
     ax.set_xlabel("Date")
-    ax.set_ylabel("Loss")
+    ax.set_ylabel("Perte")
     ax.legend()
     ax.grid(True, alpha=0.3)
     fig.tight_layout()
